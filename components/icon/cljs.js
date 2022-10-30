@@ -1,7 +1,6 @@
-/* eslint-disable max-len */
 import Icon from '~/components/icon';
 
-const CljsIcon = props => (
+const CljsIcon = (props) => (
   <Icon viewBox="0 0 480 480" {...props}>
     <rect width={480} height={480} fill="#f3df49" />
     <path

@@ -1,4 +1,3 @@
-import { string } from 'prop-types';
 import styled from 'styled-components';
 import media from '~/media';
 
@@ -13,9 +12,5 @@ const Icon = styled.svg.attrs({ 'aria-hidden': true })`
     height: 1em;
   `};
 `;
-
-Icon.propTypes = {
-  viewBox: string.isRequired,
-};
 
 export default Icon;

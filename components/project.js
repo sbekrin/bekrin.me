@@ -1,7 +1,6 @@
 import styled from 'styled-components';
-import { arrayOf, string, any, func } from 'prop-types';
 import Text from '~/components/text';
-import ExternalLink from '~/components/link/external';
+import Link from '~/components/link';
 import media from '~/media';
 
 const Card = styled(Text)`
@@ -21,12 +20,12 @@ const Label = styled.b`
 
 const Description = styled.span`
   display: block;
-  color: ${props => props.theme.darkGrey};
+  color: ${(props) => props.theme.darkGrey};
 `;
 
-const Project = ({ name, icon: Icon, href, trackAs, children }) => (
+const Project = ({ name, icon: Icon, href, children }) => (
   <Card>
-    <ExternalLink href={href} trackAs={trackAs}>
+    <Link href={href}>
       <Label>
         {Icon && (
           <span>
@@ -37,17 +36,8 @@ const Project = ({ name, icon: Icon, href, trackAs, children }) => (
         {name}
       </Label>
       <Description>{children}</Description>
-    </ExternalLink>
+    </Link>
   </Card>
 );
-
-Project.propTypes = {
-  name: string.isRequired,
-  icon: func,
-  tags: arrayOf(string),
-  href: string.isRequired,
-  trackAs: string.isRequired,
-  children: any.isRequired,
-};
 
 export default Project;

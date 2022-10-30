@@ -1,33 +1,25 @@
-import Document, { Head, Main, NextScript } from 'next/document';
+import DefaultDocument from 'next/document';
 import { ServerStyleSheet } from 'styled-components';
 
-export default class Root extends Document {
-  static getInitialProps({ renderPage }) {
+export default class Document extends DefaultDocument {
+  static async getInitialProps(ctx) {
     const sheet = new ServerStyleSheet();
-    const page = renderPage(App => props =>
-      sheet.collectStyles(<App {...props} />)
-    );
-    const styleTags = sheet.getStyleElement();
-    return { ...page, styleTags };
-  }
+    const originalRenderPage = ctx.renderPage;
 
-  render() {
-    return (
-      <html lang="en">
-        <Head>
-          <meta charSet="utf-8" />
-          <meta name="viewport" content="width=device-width, initial-scale=1" />
-          <meta
-            name="description"
-            content="Sergey Bekrin, a Software Engineer"
-          />
-          {this.props.styleTags}
-        </Head>
-        <body>
-          <Main />
-          <NextScript />
-        </body>
-      </html>
-    );
+    try {
+      ctx.renderPage = () =>
+        originalRenderPage({
+          enhanceApp: (App) => (props) =>
+            sheet.collectStyles(<App {...props} />),
+        });
+
+      const initialProps = await DefaultDocument.getInitialProps(ctx);
+      return {
+        ...initialProps,
+        styles: [initialProps.styles, sheet.getStyleElement()],
+      };
+    } finally {
+      sheet.seal();
+    }
   }
 }

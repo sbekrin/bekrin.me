@@ -1,4 +1,3 @@
-import { any, string } from 'prop-types';
 import styled, { css } from 'styled-components';
 import media from '~/media';
 
@@ -8,7 +7,7 @@ const Content = styled.div`
   flex-direction: column;
   width: 100%;
 
-  ${props =>
+  ${(props) =>
     props.hero &&
     css`
       background-color: ${props.theme.almostBlack};
@@ -29,15 +28,10 @@ const Container = styled.div`
   align-items: center;
 `;
 
-const Section = props => (
+const Section = (props) => (
   <Container>
     <Content {...props} />
   </Container>
 );
-
-Section.propTypes = {
-  children: any.isRequired,
-  className: string,
-};
 
 export default Section;

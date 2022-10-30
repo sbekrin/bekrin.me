@@ -1,7 +1,6 @@
-/* eslint-disable max-len */
 import Icon from '~/components/icon';
 
-const NopresetIcon = props => (
+const NopresetIcon = (props) => (
   <Icon viewBox="50 40 300 300" {...props}>
     <g stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
       <rect fill="#0D45C3" x="0" y="0" width="400" height="400" />

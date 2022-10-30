@@ -1,7 +1,6 @@
-/* eslint-disable max-len */
 import Icon from '~/components/icon';
 
-const ResearchGate = props => (
+const ResearchGate = (props) => (
   <Icon viewBox="0 0 40 40" {...props}>
     <rect x="0" y="0" width="114" height="124" fill="#0cb" />
     <path

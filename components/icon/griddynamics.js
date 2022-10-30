@@ -1,7 +1,6 @@
-/* eslint-disable max-len */
 import Icon from '~/components/icon';
 
-const GridDynamicsIcon = props => (
+const GridDynamicsIcon = (props) => (
   <Icon viewBox="0 0 40 39" {...props}>
     <clipPath id="a">
       <path d="M0 0h39.484v38.931h-39.484z" />

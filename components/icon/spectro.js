@@ -1,7 +1,6 @@
-/* eslint-disable max-len */
 import Icon from '~/components/icon';
 
-const SpectroIcon = props => (
+const SpectroIcon = (props) => (
   <Icon viewBox="0 0 70 70" {...props}>
     <clipPath id="clip">
       <rect width={70} height={70} />

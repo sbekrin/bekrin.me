@@ -6,21 +6,8 @@ const lastUpdateDate = moment(lastCommitDate).format('MMM. Do YYYY');
 process.env.LAST_UPDATE_DATE = lastUpdateDate;
 
 module.exports = {
-  exportPathMap() {
-    return {
-      '/': {
-        page: '/',
-      },
-      '/projects': {
-        page: '/projects',
-      },
-      '/contacts': {
-        page: '/contacts',
-      },
-      '/404': {
-        page: '/404',
-      },
-    };
+  compiler: {
+    styledComponents: true,
   },
   webpack(config) {
     // Add last update date

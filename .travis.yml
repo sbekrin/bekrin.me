@@ -1,8 +1,0 @@
-language: node_js
-node_js: 10
-cache: yarn
-before_install:
-  - yarn global add now
-script:
-  - now --build-env LAST_COMMIT_DATE=$(git log -1 --date=short --pretty=format:%cd) --token $NOW_TOKEN
-  - if [ "$TRAVIS_BRANCH" = "master" ]; then now alias --token $NOW_TOKEN; fi

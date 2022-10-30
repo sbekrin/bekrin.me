@@ -1,24 +1,15 @@
 import { Component } from 'react';
-import { any, string } from 'prop-types';
-import ReactGA from 'react-ga';
 import Head from 'next/head';
-import styled, { injectGlobal, ThemeProvider } from 'styled-components';
-import { initialize } from 'react-ga';
+import styled, { ThemeProvider } from 'styled-components';
 import Header from '~/components/header';
 import Content from '~/components/content';
 import Footer from '~/components/footer';
 import Section from '~/components/section';
 import Menu from '~/components/menu';
 import MenuItem from '~/components/menu/item';
-import Link from '~/components/link/external';
-import GlobalStyles from '~/components/global-styles';
+import Link from '~/components/link';
 
 class Layout extends Component {
-  static propTypes = {
-    children: any.isRequired,
-    title: string,
-  };
-
   theme = {
     blue: '#0f58fb',
     red: '#ad0051',
@@ -38,20 +29,8 @@ class Layout extends Component {
     this.setState({ useAltFavicon: document.hidden });
   };
 
-  triggerPageView = () => {
-    if (!window.IS_GA_INITIALIZED) {
-      window.IS_GA_INITIALIZED = true;
-      initialize('UA-19088106-7', {
-        debug: process.env.NODE_ENV === 'development',
-      });
-    }
-    ReactGA.set({ page: window.location.pathname });
-    ReactGA.pageview(window.location.pathname);
-  };
-
   componentDidMount() {
     document.addEventListener('visibilitychange', this.toggleFavicon);
-    this.triggerPageView();
   }
 
   componentWillUnmount() {
@@ -67,12 +46,11 @@ class Layout extends Component {
     const { title, children, ...props } = this.props;
     const formattedTitle = title
       ? `${title} — Sergey Bekrin`
-      : 'Sergey Bekrin, a Software Engineer';
+      : 'Sergey Bekrin, a Lead Frontend Engineer';
 
     return (
       <ThemeProvider theme={this.theme}>
         <div {...props}>
-          <GlobalStyles />
           <Head>
             <title>{formattedTitle}</title>
             {this.renderFavicon(useAltFavicon ? 'favicon-alt' : 'favicon')}
@@ -89,7 +67,7 @@ class Layout extends Component {
           <Content>{children}</Content>
           <Footer>
             Last updated {process.env.LAST_UPDATE_DATE} &#xb7;{' '}
-            <Link href="//github.com/sbekrin/bekrin.me" trackAs="github-source">
+            <Link href="https://github.com/sbekrin/bekrin.me">
               View&nbsp;source
             </Link>
           </Footer>

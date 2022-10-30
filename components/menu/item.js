@@ -1,7 +1,6 @@
 import Link from 'next/link';
 import styled, { css, withTheme } from 'styled-components';
 import { withRouter } from 'next/router';
-import { string, any, bool } from 'prop-types';
 import media from '~/media';
 
 const Container = styled.span`
@@ -21,16 +20,17 @@ const Container = styled.span`
     text-decoration: none;
     font-weight: bold;
     white-space: nowrap;
-    color: ${props => (props.active ? props.theme.darkGrey : props.theme.blue)};
-    cursor: ${props => (props.active ? 'default' : 'pointer')};
-    pointer-events: ${props => (props.active ? 'none' : 'initial')};
+    color: ${(props) =>
+      props.active ? props.theme.darkGrey : props.theme.blue};
+    cursor: ${(props) => (props.active ? 'default' : 'pointer')};
+    pointer-events: ${(props) => (props.active ? 'none' : 'initial')};
 
     &:active {
       outline: none;
     }
 
     &:hover {
-      color: ${props =>
+      color: ${(props) =>
         props.active ? props.theme.darkGrey : props.theme.red};
     }
   }
@@ -38,20 +38,11 @@ const Container = styled.span`
 
 const MenuItem = ({ href, children, active }) => (
   <Container active={active}>
-    <Link href={href}>
-      <a>{children}</a>
-    </Link>
+    <Link href={href}>{children}</Link>
   </Container>
 );
 
-const withActiveFlag = Target => props => (
-  <Target {...props} active={props.router.pathname === props.href} />
-);
-
-MenuItem.propTypes = {
-  href: string.isRequired,
-  children: any.isRequired,
-  active: bool.isRequired,
-};
+const withActiveFlag = (Target) => (props) =>
+  <Target {...props} active={props.router.pathname === props.href} />;
 
 export default withTheme(withRouter(withActiveFlag(MenuItem)));

@@ -10,23 +10,20 @@ export default () => (
       <Heading bold>Social &amp; contacts</Heading>
       <Text intro>
         Whether you want to discuss something or just say hi, feel free to{' '}
-        <Link href="mailto:sergey@bekrin.me" trackAs="email">
-          drop an email
-        </Link>{' '}
-        or start a{' '}
-        <Link href="//telegram.me/sbekrin" trackAs="telegram" nowrap>
+        <Link href="mailto:sergey@bekrin.me">drop an email</Link> or start a{' '}
+        <Link href="https://telegram.me/sbekrin" nowrap>
           chat in Telegram
         </Link>{' '}
         messenger. I occasinally share (mostly urban) photos{' '}
-        <Link href="//www.instagram.com/sbekrin" trackAs="instagram" nowrap>
+        <Link href="https://www.instagram.com/sbekrin" nowrap>
           on Instagram
         </Link>{' '}
         and retweet non-serius stuff{' '}
-        <Link href="//twitter.com/sbekrin" trackAs="twitter" nowrap>
+        <Link href="https://twitter.com/sbekrin" nowrap>
           on Twitter
         </Link>
         . I don't have a SoundCloud, but you can follow me{' '}
-        <Link href="//github.com/sbekrin" trackAs="github" nowrap>
+        <Link href="https://github.com/sbekrin" nowrap>
           on GitHub
         </Link>
         .

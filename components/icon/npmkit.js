@@ -1,7 +1,6 @@
-/* eslint-disable max-len */
 import Icon from '~/components/icon';
 
-const NpmkitIcon = props => (
+const NpmkitIcon = (props) => (
   <Icon viewBox="0 0 32 32" {...props}>
     <path d="M18,12l12,-6l0,4l-4,2l0,11l-4,2l0,-11l-4,2l0,-4Z" fill="#020202" />
     <path d="M16,13l2,-1l0,15l-2,1l-2,-1l0,-15l2,1Z" fill="#020202" />
